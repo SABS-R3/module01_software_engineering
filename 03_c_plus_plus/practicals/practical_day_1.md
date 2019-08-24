@@ -84,10 +84,10 @@ When you are completing these questions, you may prefer:
    (b) a capture variable.
 
 1. Overload the $p$-norm function in Q4 to take a `std::vector<double>`. Loop over the vector using
-    (a) an index-based loop,
-    (b) a range-based loop,
-    (c) an iterator-based loop,
-    (d) the `std::accumulate` STL algorithm (in the `<numeric>` header)
+   (a) an index-based loop,
+   (b) a range-based loop,
+   (c) an iterator-based loop,
+   (d) the `std::accumulate` STL algorithm (in the `<numeric>` header)
 
 1. Write a function multiply that may be used to multiply two matrices, given their sizes. You are free to choose any type to represent your matrices, but you might want to try either a `std::vector<double>` or a `std::vector<std::vector<double>>`
 
