@@ -2,7 +2,7 @@
 
 Course content for the three week module, divided into a folder for each day of content
 
-# Software Requirements
+### Software Requirements
 
 - Bash shell
 - Python >= 3.6
