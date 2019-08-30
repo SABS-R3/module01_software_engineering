@@ -97,7 +97,7 @@ void interactions(std::vector<double>& xn, std::vector<double>& yn,
 ```
 
 1. Write a pybind11 wrapper for `interactions` and use it in your python code. Measure
-   the speed-up obtained and take a note of the RAM usage scales with larger $N$. 
+   the speed-up obtained and take a note of how the RAM usage scales with larger $N$. 
    
 1. Your computational cost is no longer bounded by RAM, but by the cost of evaluating
    $N^2$ interactions. There are many different ways of speeding this up in C++, one of

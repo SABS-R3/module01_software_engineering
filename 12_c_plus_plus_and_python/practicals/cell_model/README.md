@@ -1,8 +1,9 @@
 # Instructions
 
 ```bash 
+git clone https://github.com/pybind/pybind11.git
 python3 -m venv env
 source env/bin/activate
-pip install -r requirements.txt
-python cell_model.py
+pip install -e .
+python simulate.py
 ```
