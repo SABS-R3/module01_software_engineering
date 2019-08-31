@@ -15,9 +15,9 @@ link-citations: true
 
 This practical uses a model of cell diffusion and excluded volume interaction. It is not
 required that you understand the details of the model, as it is implemented for you in
-the file `excluded_volume_diffusion.py`. The purpose of this practical is to profile and
-increase the efficiency of the model using numpy vectorisation and C++. The details of
-the model are provided below.
+the python module contain in the `cell_model` directory. The purpose of this practical
+is to profile and increase the efficiency of the model using numpy vectorisation and
+C++. The details of the model are provided below.
 
 The model consists of a set of $N$ cells in a periodic unit square domain. Let
 $\bfX_i(t)$ denote the position of the $i$th particle in $\Omega \subset \mathbb R^2$.
