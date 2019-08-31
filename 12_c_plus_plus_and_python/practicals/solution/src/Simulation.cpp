@@ -66,6 +66,7 @@ Simulation::Simulation(const std::vector<double> &x,
   }
 }
 
+
 void Simulation::boundaries(const double dt) {
   std::transform(m_next_positions.begin(), m_next_positions.end(),
                  m_next_positions.begin(), [](const Point &i) {

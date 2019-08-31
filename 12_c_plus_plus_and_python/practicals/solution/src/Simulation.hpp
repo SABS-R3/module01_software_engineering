@@ -44,6 +44,7 @@ public:
              const double size, const double max_dt);
 
   void integrate(const double period);
+  const std::vector<Point> &get_positions();
 
 private:
   void boundaries(const double dt);
