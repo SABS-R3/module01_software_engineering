@@ -1,0 +1,7 @@
+*.png
+build
+env
+pybind11
+*.egg-info
+*.so
+cell_model/__pycache__
