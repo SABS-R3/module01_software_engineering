@@ -49,9 +49,10 @@ and unit variance.
 # Numpy Vectorisation
 
 
-1. Examine the python code in `excluded_volume_diffusion.py`. Install the requirements
-   for the code using `pip install -r requirements.txt`, and run it using `python
-   excluded_volume_diffusion.py`.
+1. Examine the python code in `src/Simulation.py` and `simulate.py`, which implements
+   the cell model described above. Install the code
+   using the instructions in the `README.md`, and run it using `python
+   simulate.py`.
 
 1. Vectorise the code in `Simulation.diffusion()`, using only a single call to
    `np.random.randn`. How does this improve the profiled time of this function? What is
@@ -63,8 +64,8 @@ and unit variance.
 1. Now include interactions in the simulation by setting `sim.calculate_interactions =
    True`. The double loop in `Simulations.interactions()` is now a significant
    computational cost. Vectorise this code so that there are no loops remaining. What is
-   the memory cost and how does it scale with the number of cells $N$? How many
-   particles can you simulate before your computer runs out of RAM?
+   the memory cost and how does it scale with the number of cells $N$? How
+   many particles can you simulate before your computer runs out of RAM?
 
 
 # Wrapping C++
@@ -73,20 +74,21 @@ Using C++ you can improve the performance of the simulation without the RAM cost
 vectorisation. You can also parallelise your code more easily, and have access to a
 wider array of high performance libraries.
 
-Start from the pybind11 template project provided in X. Again we will start with the
-non-interacting case and deal with interactions at the end.
+The `cell_model` module already has a template `pybind11` project for you to use. Again
+we will start with the non-interacting case and deal with interactions at the end.
 
-1. Write C++ function replacements for `Simulation.diffusion()` and
-   `Simulation.boundaries()`, with signatures:
+1. In the provided files `src/Functions.cpp`, write C++ function replacements for
+   `Simulation.diffusion()` and `Simulation.boundaries()`, with signatures:
 
 ```cpp 
 void diffusion(std::vector<double>& xn, std::vector<double>& yn, const double dt);
 void boundaries(std::vector<double>& xn, std::vector<double>& yn, const double dt);
 ```
 
-1. Write pybind11 wrappers for these functions and call them from your python
-   simulation. Ensure that the output of the simulation is unchanged. How much speed-up
-   can you obtain over your vectorised numpy code? What is the RAM cost?
+1. Write pybind11 wrappers for these functions in the files `src/python_wrapper.cpp` and
+   call them from your python simulation. Ensure that the output of the simulation is
+   unchanged. How much speed-up can you obtain over your vectorised numpy code? What is
+   the RAM cost?
 
 1. Now write a C++ function replacement for `Simulation.interactions()`
    
@@ -97,13 +99,15 @@ void interactions(std::vector<double>& xn, std::vector<double>& yn,
 ```
 
 1. Write a pybind11 wrapper for `interactions` and use it in your python code. Measure
-   the speed-up obtained and take a note of how the RAM usage scales with larger $N$. 
+   the speed-up obtained (plot the time taken versus $N$) and take a note of how the RAM
+   usage scales with larger $N$. 
    
 1. Your computational cost is no longer bounded by RAM, but by the cost of evaluating
-   $N^2$ interactions. There are many different ways of speeding this up in C++, one of
-   which is using a hash map (via the the C++ `std::unordered_map` container) to only
-   consider nearby cell interactions. This has been implemented for you in
-   `Simulation.cpp`, which reimplements the `Simulations` class in C++. Wrap this C++
-   class so that you can use it from Python, and use it in your simulation loop. What is
-   the cost of evaluating the interactions now, and how does this scale with $N$?
+   the cell-cell interactions. There are many different ways of speeding this up in C++,
+   one of which is using a hash map (via the the C++ `std::unordered_map` container) to
+   only consider nearby cell interactions. This has been implemented for you in
+   `src/Simulation.cpp`, which reimplements the `Simulations` class in C++. Wrap this
+   C++ class so that you can use it from Python, and use it in your simulation loop. How
+   will you get the cell positions from this class back to python? What is the cost of
+   evaluating the interactions now, and how does this scale with $N$ (plot this)?
 
