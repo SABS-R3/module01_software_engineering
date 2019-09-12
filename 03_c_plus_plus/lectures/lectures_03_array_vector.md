@@ -1,5 +1,5 @@
-% Numerical Computing in C++ - lectures 3-4
-% Fergus Cooper
+% Introduction to C++ - arrays and vectors
+% Martin Robinson
 % 2019
 
 # Fixed sized arrays
@@ -54,8 +54,7 @@ array = {0, 1, 2};
 
 is not correct.
 
-
-
+[`[< cppreference >]`](https://en.cppreference.com/w/cpp/container/array)
 
 
 # Vectors - dynamic arrays
@@ -89,6 +88,8 @@ x.resize(3);      // x holds {1.0, ?, ?}
 std::cout << x.size() << std::endl; // 3
 ~~~
 
+[`[< cppreference >]`](https://en.cppreference.com/w/cpp/container/vector)
+
 # Read/write individual values
 
 You can access individual elements for reading or writing using `operator[]`{.Cpp}
@@ -107,8 +108,7 @@ for example printing each element of a vector:
 
 ~~~cpp
 std::vector<double> x = {1.0, 2.0, 3.0, 4.0};
-for (int i = 0; i < x.size(); ++i)
-{
+for (int i = 0; i < x.size(); ++i) {
    std:cout << x[i] << std::endl;
 }
 ~~~
@@ -139,8 +139,7 @@ correct type (i.e. what is returned from `x.begin()`, this can be used to
 simplify this syntax:
 
 ~~~cpp
-for (auto i = x.begin(); i != x.end(); ++i)
-{
+for (auto i = x.begin(); i != x.end(); ++i) {
    std:cout << *i << std::endl;
 }
 ~~~
@@ -152,8 +151,7 @@ container that has `begin` and `end` methods.
 
 ~~~cpp
 std::vector<double> x = {1.0, 2.0, 3.0, 4.0};
-for (double i: x)
-{
+for (double i: x) {
    std:cout << i << std::endl;
 }
 ~~~
@@ -163,8 +161,7 @@ for (double i: x)
 You can use `auto`{.Cpp} here to simplify things...
 
 ~~~cpp
-for (auto i: x)
-{
+for (auto i: x) {
    std:cout << i << std::endl;
 }
 ~~~
@@ -176,13 +173,11 @@ because `i` was a *copy* of each element of x. You can instead make `i` a
 reference to edit values.
 
 ~~~cpp
-for (auto& i: x)
-{
+for (auto& i: x) {
     i = 1.0; // set each element to 1.0
 }
 
-for (const auto& i: x)
-{
+for (const auto& i: x) {
     std::cout << i << std::endl; // print each element to the console
 }
 ~~~

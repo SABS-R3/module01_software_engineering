@@ -1,6 +1,6 @@
 % Introduction to C++
 % Martin Robinson
-% Nov 2019
+% Oct 2019
 
 # Administration
 
@@ -151,3 +151,46 @@ This program prints the text "Hello World" to the screen
   ~~~bash
   ./hello_world
   ~~~
+
+# Makefiles
+
+- Make is a general-purpose Unix tool that generates *targets* from their *depedencies*
+  according to a set of *rules*, or *commands*, that you supply. These targets,
+  dependencies and rules are all specified in a file called `Makefile`. For example:
+
+  ~~~make
+  hello_world: hello_world.cpp
+    g++ -o hello_world hello_world.cpp
+  ~~~
+
+- Type `make` in a directory containing a `Makefile`, which by default generates the 
+  first target in the `Makefile`.
+
+# CMake
+
+- CMake is a higher-level build system, which takes project definitions written in its 
+  own syntax, and generates `Makefiles` (or other, similar tools) that will compile your 
+  project, for example:
+
+  ~~~cmake
+  cmake_minimum_required(VERSION 3.10)
+  project(hello_world)
+  set(CMAKE_CXX_STANDARD 14)
+  add_executable(hello_world hello_world.cpp)
+  ~~~
+
+- Run `cmake` to generate the Makefile, then `make` to do the compilation
+
+  ~~~bash
+  $ cmake <path-to-CMakeLists.txt>
+  $ make
+  ~~~
+
+# Clion
+
+- CLion is a C++ Interactive Development Environment (IDE) that, among other things, can 
+  handle compilation of (simple) projects automatically
+- It uses CMake to do this, creating a `CMakeLists.txt` within each project
+- You can edit the `CMakeLists.txt` directly to specify custom build behaviour
+- CLion will be the recommended IDE to use during this course, although you are free to 
+  use whatever tool you are most familiar with.

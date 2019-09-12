@@ -1,16 +1,6 @@
-% Numerical Computing in C++ - lectures 3-4
-% Fergus Cooper
-% 2019
-
-# Lecture 3
-
-- pointers
-
-- functions
-
-- references
-
--------------------
+% Introduction to C++ - pointers, references, functions
+% Martin Robinson
+% Oct 2019
 
 # Pointers
 
@@ -88,23 +78,22 @@ The function prototype tells the compiler about function's name, return type, an
 #include <iostream>
 double multiply(double x, double y); // function prototype
 
-int main()
-{
+int main() {
   double a = 1.0, b = 2.0, z;
   z = multiply(a, b);
   std::cout << a << " times " << b << " equals " << z << '\n';
   return 0;
 }
 
-double multiply(double x, double y) // function definition
-{
+double multiply(double x, double y) { // function definition
   return x * y;
 }
 ~~~
 
+[`[< compiler explorer >]`](https://gcc.godbolt.org/z/zIof6z)
+
 -------------------
 
-[`[< compiler explorer >]`](https://gcc.godbolt.org/z/zIof6z)
 
 A function may also return no value, and be declared as `void`{.Cpp}.
 
@@ -139,8 +128,7 @@ Any variables that are used in the function must be declared as normal.
 For example:
 
 ~~~Cpp
-double multiply_by_5(double x)
-{
+double multiply_by_5(double x) {
   double y = 5.0;
   return x * y;
 }

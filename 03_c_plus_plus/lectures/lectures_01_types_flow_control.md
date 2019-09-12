@@ -1,6 +1,6 @@
 % Introduction to C++ - types and flow control
 % Martin Robinson
-% 2019
+% Oct 2019
 
 
 # Numerical variables
@@ -63,6 +63,7 @@ and not
 ~~~
 
 [`[< compiler explorer >]`](https://gcc.godbolt.org/z/yM3VpW)
+
 
 #
 
@@ -263,8 +264,7 @@ Suppose you want to execute some code only if the condition `p > q`{.Cpp} is met
 This is achieved using the following code:
 
 ~~~Cpp
-if (p > q)
-{
+if (p > q) {
   statement1;
   statement2;
 }
@@ -286,8 +286,7 @@ if (p > q)
 but this is considered poor software engineering practice, and instead you should write this code as
 
 ~~~Cpp
-if (p > q)
-{
+if (p > q) {
   statement1;
 }
 ~~~
@@ -362,16 +361,13 @@ Boolean variables may be used in `if`{.Cpp} statements as follows
 
 ~~~Cpp
 bool flag1 = true, flag2 = false;
-if (flag1)
-{
+if (flag1) {
   std::cout << "Does print something" << '\n';
 }
-if (flag2)
-{
+if (flag2) {
   std::cout << "Doesn't print anything" << '\n';
 }
-if (!flag2)
-{
+if (!flag2) {
   std::cout << "Does print something" << '\n';
 }
 ~~~
@@ -400,8 +396,7 @@ If you need a loop to execute at least once, with a test at the end, use:
 The following loop executes the statements inside the loop 10 times.
 
 ~~~Cpp
-for (int i=0; i<10; i++)
-{
+for (int i=0; i<10; i++) {
   statement1;
   statement2;
 }
@@ -414,10 +409,8 @@ Note that `i` can be previously declared, or declared in the loop statement.
 `for` loops can be nested and run over variable indices:
 
 ~~~Cpp
-for (int i=0; i<5; i++)
-{
-  for (int j=0; j<10; j++)
-  {
+for (int i=0; i<5; i++) {
+  for (int j=0; j<10; j++) {
     std::cout << "i = " << i << " j = " << j << '\n';
   }
 }

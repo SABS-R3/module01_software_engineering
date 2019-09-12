@@ -6,10 +6,9 @@ link-citations: true
 ---
 
 
-# Practical 1 (Lectures 1-2)
+# Practical 1 
 
-Unless specified, either use Compiler Explorer (https://gcc.godbolt.org/), CLion
-(https://www.jetbrains.com/clion/), or your preferred C++ toolchain.
+Feel free to use CLion or your preferred C++ toolchain to implement these exercises.
 
 When you are completing these questions, you may prefer:
 
