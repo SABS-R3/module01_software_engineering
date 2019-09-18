@@ -5,5 +5,3 @@ pybind11
 *.egg-info
 *.so
 cell_model/__pycache__
-cell_model/*.c
-cell_model/*.html
