@@ -17,7 +17,7 @@ cdef class SimulationCython:
     cdef double size
     cdef public int calculate_interactions 
 
-    def __init__(self, double[:] x, double[:] y, size, max_dt):
+    def __init__(self, double[:] x, double[:] y, double size, double max_dt):
         """
         Creates a new simulation objects that implements the cell model with diffusion
         and excluded volume interactions. Cells are defined on a unit square domain and
