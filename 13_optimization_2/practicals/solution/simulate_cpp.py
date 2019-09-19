@@ -30,7 +30,7 @@ if __name__ == "__main__":
     # create simulation
     x = cell_model_cpp.VectorDouble(np.random.normal(mu, sigma, n))
     y = cell_model_cpp.VectorDouble(np.random.normal(mu, sigma, n))
-    sim = cell_model_cpp.Simulation(x, y, size, max_dt)
+    sim = cell_model_cpp.Simulation(x, y, size, max_dt, 0)
 
     # profile a single call to integrate
     cProfile.run('sim.integrate(integrate_time)', sort='cumulative')

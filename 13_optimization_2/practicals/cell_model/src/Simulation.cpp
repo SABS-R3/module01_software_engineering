@@ -48,8 +48,8 @@ int PointHash::operator()(const Point &p) const {
 
 Simulation::Simulation(const std::vector<double> &x,
                        const std::vector<double> &y, const double size,
-                       const double max_dt)
-    : m_size(size), m_max_dt(max_dt), m_hash(size),
+                       const double max_dt, const size_t seed)
+    : m_generator(seed), m_size(size), m_max_dt(max_dt), m_hash(size),
       m_positions(m_hash.total_number_of_buckets(), m_hash) {
 
   for (int i = 0; i < x.size(); ++i) {

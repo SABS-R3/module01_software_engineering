@@ -64,11 +64,15 @@ void interactions(std::vector<double>& xn, std::vector<double>& yn,
 
 # Python parallel programming
 
-The cell model provided is a stochastic model, and running it provides a single sample 
-from the probability distribution defined over its outputs (i.e. the entire set of cell 
-positions). In order to get access to this distribution, it is required to take many 
-independent samples 
+The cell model provided is a stochastic model, and running it only provides a single 
+sample from the probability distribution defined over its outputs (i.e. the entire set 
+of cell positions). In order to get access to this distribution, it is required to take 
+many independent samples (i.e. run many simulations) in order to build up statistics of 
+the quantities of interest. We can easily run these in parallel using the Python 
+multiprocessing library
 
-1. 
+1. Use the multiprocessing library to run $N$ simulations of the cell model and 
+   construct a sequence of histograms at each output time point, that show the average 
+   number of cells within each bin.
 
 

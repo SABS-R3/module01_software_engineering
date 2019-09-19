@@ -30,7 +30,7 @@ if __name__ == "__main__":
     # create simulation
     x = np.random.normal(mu, sigma, n)
     y = np.random.normal(mu, sigma, n)
-    sim = cell_model.Simulation(x, y, size, max_dt)
+    sim = cell_model.Simulation(x, y, size, max_dt, 0)
 
     # Set to True to include excluded volume interactions
     sim.calculate_interactions = True

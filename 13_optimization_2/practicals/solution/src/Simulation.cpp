@@ -48,8 +48,8 @@ int PointHash::operator()(const Point &p) const {
 
 Simulation::Simulation(const std::vector<double> &x,
                        const std::vector<double> &y, const double size,
-                       const double max_dt)
-    : m_size(size), m_max_dt(max_dt), m_hash(size),
+                       const double max_dt, const size_t seed)
+    : m_generator(seed), m_size(size), m_max_dt(max_dt), m_hash(size),
       m_positions(m_hash.total_number_of_buckets(), m_hash) {
 
   for (int i = 0; i < x.size(); ++i) {
@@ -65,7 +65,6 @@ Simulation::Simulation(const std::vector<double> &x,
     }
   }
 }
-
 
 void Simulation::boundaries(const double dt) {
   std::transform(m_next_positions.begin(), m_next_positions.end(),
@@ -139,7 +138,6 @@ void Simulation::step(const double dt) {
 }
 void Simulation::integrate(const double period) {
   const int n = static_cast<int>(std::floor(period / m_max_dt));
-  std::cout << "integrating for " << n + 1 << " steps" << std::endl;
   for (int i = 0; i < n; ++i) {
     step(m_max_dt);
   }

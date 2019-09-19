@@ -21,7 +21,7 @@ PYBIND11_MODULE(cell_model_cpp, m) {
 
   py::class_<Simulation>(m, "Simulation")
       .def(py::init<const std::vector<double> &, const std::vector<double> &,
-                    const double, const double>())
+                    const double, const double, const size_t>())
       .def("integrate", &Simulation::integrate)
       .def("get_positions", &Simulation::get_positions);
 }

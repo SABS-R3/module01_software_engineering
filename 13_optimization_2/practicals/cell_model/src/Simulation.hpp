@@ -41,7 +41,9 @@ private:
 class Simulation {
 public:
   Simulation(const std::vector<double> &x, const std::vector<double> &y,
-             const double size, const double max_dt);
+             const double size, const double max_dt, const size_t seed=0);
+
+
 
   void integrate(const double period);
 

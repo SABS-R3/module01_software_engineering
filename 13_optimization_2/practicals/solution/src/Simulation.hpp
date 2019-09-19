@@ -41,10 +41,12 @@ private:
 class Simulation {
 public:
   Simulation(const std::vector<double> &x, const std::vector<double> &y,
-             const double size, const double max_dt);
+             const double size, const double max_dt, const size_t seed=0);
+
+
 
   void integrate(const double period);
-  const std::vector<Point> &get_positions();
+  const std::vector<Point> &get_positions() { return m_next_positions; }
 
 private:
   void boundaries(const double dt);
