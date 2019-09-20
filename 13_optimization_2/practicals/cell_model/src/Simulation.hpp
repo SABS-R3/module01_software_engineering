@@ -7,6 +7,7 @@
 
 #include "Functions.hpp"
 
+/// A point with x and y coordinates
 class Point {
 public:
   Point() : x(0.0), y(0.0) {}
@@ -20,6 +21,7 @@ public:
   double y;
 };
 
+/// A hash that maps from a 2D coordinate (i.e. a Point) to a bucket index
 struct PointHash {
 public:
   using Coord = std::pair<int, int>;
@@ -38,13 +40,23 @@ private:
   double m_cutoff;
 };
 
+/// main simulation class
 class Simulation {
 public:
+
+  /// construct a new simulation
+  ///
+  /// @param x vector of x coordinates
+  /// @param y vector of y coordinates
+  /// @param size the size of the cells
+  /// @param max_dt the maximum timestep to take during the simulation
+  /// @param seed a seed for the random number generator
   Simulation(const std::vector<double> &x, const std::vector<double> &y,
              const double size, const double max_dt, const size_t seed=0);
 
-
-
+  /// integrate the simulation forward by a given time
+  ///
+  /// @param period the time to integrate forward by
   void integrate(const double period);
 
 private:

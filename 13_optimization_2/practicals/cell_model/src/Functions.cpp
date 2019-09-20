@@ -1,18 +1,18 @@
 #include "Functions.hpp"
+#include <random>
 
-void diffusion(std::vector<double> &xn, std::vector<double> &yn,
+
+void diffusion(py::array_t<double> xn_arg, py::array_t<double> yn_arg,
                const double dt) {
-
-  // TODO: fill this out
+  //TODO: fill this out
 }
-void boundaries(std::vector<double> &xn, std::vector<double> &yn,
+void boundaries(py::array_t<double> xn_arg, py::array_t<double> yn_arg,
                 const double dt) {
-
-  // TODO: fill this out
+  //TODO: fill this out
 }
-void interactions(std::vector<double> &xn, std::vector<double> &yn,
-                  const std::vector<double> &x, const std::vector<double> &y,
+void interactions(py::array_t<double> xn_arg, py::array_t<double> yn_arg,
+                  py::array_t<double> x_arg, py::array_t<double> y_arg,
                   const double dt, const double size) {
+  //TODO: fill this out
 
-  // TODO: fill this out
 }
