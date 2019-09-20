@@ -5,3 +5,4 @@ pybind11
 *.egg-info
 *.so
 cell_model/__pycache__
+result.pickle

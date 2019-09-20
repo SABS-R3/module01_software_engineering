@@ -84,9 +84,9 @@ void Simulation::boundaries(const double dt) {
                  });
 }
 void Simulation::diffusion(const double dt) {
+  const double c = std::sqrt(2.0 * dt);
   std::transform(m_next_positions.begin(), m_next_positions.end(),
                  m_next_positions.begin(), [&](const Point &i) {
-                   const double c = std::sqrt(2.0 * dt);
                    return Point(i.x + c * m_normal(m_generator),
                                 i.y + c * m_normal(m_generator));
                  });

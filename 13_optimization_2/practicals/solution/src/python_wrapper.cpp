@@ -13,6 +13,10 @@ PYBIND11_MODULE(cell_model_cpp, m) {
   py::bind_vector<std::vector<double>>(m, "VectorDouble");
   py::bind_vector<std::vector<Point>>(m, "VectorPoint");
 
+  m.def("diffusion", &diffusion, "Calculate diffusion");
+  m.def("boundaries", &boundaries, "Calculate boundaries");
+  m.def("interactions", &interactions, "Calculate interactions");
+
   py::class_<Point>(m, "Point")
       .def(py::init<>())
       .def(py::init<const double, const double>())

@@ -1,6 +1,7 @@
 import numpy as np
+import cell_model_cpp
 
-class Simulation:
+class Simulation_cpp:
     def __init__(self, x, y, size, max_dt):
         """
         Creates a new simulation objects that implements the cell model with diffusion
@@ -41,10 +42,7 @@ class Simulation:
 
         Updates self.xn and self.yn with the new position of the cells
         """
-        self.xn = np.where(self.xn < 0.0, - self.xn, self.xn)
-        self.xn = np.where(self.xn > 1.0, self.xn - 1.0, self.xn)
-        self.yn = np.where(self.yn < 0.0, - self.yn, self.yn)
-        self.yn = np.where(self.yn > 1.0, self.yn - 1.0, self.yn)
+        cell_model_cpp.boundaries(self.xn, self.yn, dt)
 
     def diffusion(self, dt):
         """
@@ -52,9 +50,7 @@ class Simulation:
 
         Updates self.xn and self.yn with the new position of the cells
         """
-        r = np.random.randn(2, len(self.xn))
-        self.xn += np.sqrt(2.0 * dt) * r[0, :]
-        self.yn += np.sqrt(2.0 * dt) * r[1, :]
+        cell_model_cpp.diffusion(self.xn, self.yn, dt)
 
     def interactions(self, dt):
         """
@@ -65,12 +61,7 @@ class Simulation:
 
         Updates self.xn and self.yn with the new position of the cells
         """
-        n = len(self.x)
-        dx = self.x.reshape((1, n)) - self.x.reshape((n, 1))
-        dy = self.y.reshape((1, n)) - self.y.reshape((n, 1))
-        r = np.sqrt(dx**2 + dy**2)
-        self.xn += np.nansum((dt/self.size) * np.exp(-r/self.size) * dx / r, axis=1)
-        self.yn += np.nansum((dt/self.size) * np.exp(-r/self.size) * dy / r, axis=1)
+        cell_model_cpp.interactions(self.xn, self.yn, self.x, self.y, dt, self.size)
 
     def step(self, dt):
         """
