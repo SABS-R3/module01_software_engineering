@@ -5,9 +5,9 @@ Course content for the three week module, divided into a folder for each day of 
 ### Software Requirements
 
 - Bash shell
-- Python >= 3.6 (with headers)
-- git 
-- cmake >= 3.10.0 
+- Anaconda Python distribution >= 2018.12 (this includes the required Python NumPy, Matplotlib, and other packages necessary for the course)
+- git
+- cmake >= 3.10.0
 - g++ >= 7.4.0
-- PyCharm
+- PyCharm Community or Professional Edition >= 2018.3
 - CLion
