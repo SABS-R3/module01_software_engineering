@@ -54,9 +54,12 @@ and unit variance.
    using the instructions in the `README.md`, and run it using `python
    simulate.py`.
 
+1. Profile the `Simulation.integrate` function.
+
 1. Vectorise the code in `Simulation.diffusion()`, using only a single call to
    `np.random.randn`. How does this improve the profiled time of this function? What is
-   the memory cost of vectorising this code?
+   the memory cost of vectorising this code, how does it scale with the number of cells 
+   $N$?
 
 1. Vectorise the code in `Simulation.boundaries()`, using the `np.where()` function.
    Again make an estimate of the memory cost involved.
