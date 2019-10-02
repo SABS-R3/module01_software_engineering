@@ -43,12 +43,12 @@ git pull
 
 ### Exercise 02.01
 1. Register a at github.com
-2. Create a public repository for your project with MIT licence 
+2. Create a public repository for your project with BSE3 licence 
 3. Configure the remote and push master
 4. Create a private repository for your sandbox
 5. Configure the remote and push all branches
  
-*Note:* You will be creating your repository with MIT licence.
+*Note:* You will be creating your repository with BSE3 licence.
 
 ## Cloning a existing Repository
 ```
