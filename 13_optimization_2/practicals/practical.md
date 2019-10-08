@@ -60,6 +60,24 @@ void interactions(py::array_t<double> xn, py::array_t<double> yn,
    will you get the cell positions from this class back to python? What is the cost of
    evaluating the interactions now, and how does this scale with $N$ (plot this)?
 
+# OpenMP
+
+1. The Mandelbrot set is the set of points $C$ in the complex plane that do not diverge 
+   under the following recurence relation:
+
+$$
+z_{n+1} = z_n + C
+$$
+  
+   where $z_0 = C$. The point $C$ is determined to be contained in the set if $z_n$ does 
+   not diverge to infinity. The serial code given in `mandelbrot.cpp` calculates the 
+   area of the (symmetric) mandelbrot set by looping over a set of discrete points in 
+   the box of the upper half of complex plane. The equation above is applied to each 
+   point, and that point is determined to lie within the mandelbrot set if the threshold 
+   condition $|z| \le 2$ is satisfied after 2000 iterations. Parallelise this code using 
+   OpenMP and measure the time spend calculating the area for increasing number of 
+   threads.
+   
 
 # Python parallel programming
 

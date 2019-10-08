@@ -1,6 +1,9 @@
-% Optimisation 3 - Wrapping C++ with pybind11
-% Martin Robinson
-% Oct 2019
+---
+title: Optimisation 3 - Wrapping C++ with pybind11
+author: Martin Robinson
+date: Oct 2019
+urlcolor: blue
+---
 
 # Why wrap C++
 
@@ -56,8 +59,8 @@ PYBIND11_MODULE(example, m) {
   use the CMake build system
 
 ```bash
-$ c++ -O3 -Wall -shared -std=c++11 -fPIC `python3 -m pybind11 --includes` example.cpp -o 
-example`python3-config --extension-suffix`
+$ c++ -O3 -Wall -shared -std=c++11 -fPIC `python3 -m pybind11 --includes` 
+example.cpp -o example`python3-config --extension-suffix`
 ```
 
 # Using from Python
@@ -175,9 +178,11 @@ PYBIND11_MODULE(example, m) {
 ```cpp
 void print_dict(py::dict dict) {
     /* Easily interact with Python types */
-    for (auto item : dict)
+    for (auto item : dict) {
         std::cout << "key=" << std::string(py::str(item.first)) << ", "
-                  << "value=" << std::string(py::str(item.second)) << std::endl;
+                  << "value=" << std::string(py::str(item.second)) 
+                  << std::endl;
+    }
 }
 ```
 
@@ -202,8 +207,9 @@ double norm(py::array_t<double> input, const int p) {
 
 ```cpp
 double norm(py::array_t<double> input, const int p) {
-    auto buf = input.unchecked<1>(); // input must have ndim = 1; can be non-writeable
-                                     // use input.mutable_unchecked for writeable access
+    // input must have ndim = 1; can be non-writeable
+    // use input.mutable_unchecked for writeable access
+    auto buf = input.unchecked<1>(); 
     double result = 0.0;
     for (size_t i = 0; i < buf.shape[0]; ++i) {
       result += std::pow(buf[i],p);
@@ -242,19 +248,3 @@ PYBIND11_MAKE_OPAQUE(std::vector<int>);
 - This has been a summary of the PyBind11 features you will need for the exercies
 - See the [documentation](https://pybind11.readthedocs.io/en/master/index.html) for many 
   more details, exaplanation and additional features
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
