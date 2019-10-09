@@ -158,7 +158,10 @@ for (int i = 0; i < n; ++i) {
 # Reductions
 
 - The atomic counter above was an example of a reduction, these is a commonly used 
-  pattern in programming, and easily parallelised.
+  pattern in programming, and easily parallelised (faster than using atomics).
+- OpenMP provides reductions for these operators: `+, -, *, &, |, ^, &&, ||`
+- If `op` is the operator and `x` the variable, then must use `x = x op expr`, `x = expr 
+  op x` or `x op= expr` within the parallel region
 
 ```cpp
 std::vector<double> a(n);
@@ -169,10 +172,11 @@ for (int i = 0; i < n; ++i) {
 }
 ```
 
-- OpenMP provides reductions for these operators: `+, -, *, &, |, ^, &&, ||`
-- If `op` is the operator and `x` the variable, then must use `x = x op expr`, `x = expr 
-  op x` or `x op= expr` within the parallel region
+# More information on OpenMP
 
-# 
+- OpenMP specificiation <https://www.openmp.org/>
+- Many online tutorials, books etc. See resources tab in link above for examples
+
+
 
 
