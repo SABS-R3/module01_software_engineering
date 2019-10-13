@@ -66,7 +66,7 @@ void interactions(py::array_t<double> xn, py::array_t<double> yn,
    under the following recurence relation:
 
 $$
-z_{n+1} = z_n + C
+z_{n+1} = z_n^2 + C
 $$
   
    where $z_0 = C$. The point $C$ is determined to be contained in the set if $z_n$ does 
