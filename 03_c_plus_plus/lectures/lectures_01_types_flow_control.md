@@ -491,4 +491,76 @@ or use `std::endl`, which combines a newline with a flush:
 std::cout << "Hello World" << std::endl;
 ~~~
 
+# Writing to file
+
+When writing to file, an additional header function `fstream` is needed.
+
+~~~Cpp
+#include <iostream>
+#include <fstream>
+#include <string>
+~~~
+
+The file `output.dat` may be opened using the statement
+
+~~~Cpp
+std::ofstream out("output.dat");
+~~~
+
+We can then write to this file in a similar manner as writing to the screen, with the exception that `cout` is replaced by `out`
+
+-----
+
+There are a number of formatting options available. The following prints data in scientific format:
+
+~~~Cpp
+#include <iostream>
+#include <fstream>
+int main() {
+  double x = -1.0, y = 45.3275893627129, z = 0.00000001;
+  std::ofstream out("output.dat");
+  out.setf(std::ios::scientific|std::ios::showpos);
+  out << x << " " << y << " " << z << '\n';
+  out.close();
+  return 0;
+}
+~~~
+
+[`[< compiler explorer >]`](https://gcc.godbolt.org/z/HYgcPg); [`[< cpp reference >]`](https://en.cppreference.com/w/cpp/io/ios_base/fmtflags)
+
+# Reading from file
+
+Suppose the file `numbers.dat` has 3 columns of numbers.
+This file can be opened using the following code
+
+~~~Cpp
+#include <fstream>
+
+double x, y, z;
+std::string line;
+std::ifstream input("numbers.dat");
+assert(input.is_open());
+~~~
+
+`input.is_open()` returns `true`{.Cpp} if the file was successfully opened
+
+-----
+
+We can read the file like so:
+
+~~~Cpp
+#include <sstream>
+
+while(std::getline(input, line)) {
+    std::istringstream s(line);
+    s >> x >> y >> z;
+}
+input.close();
+~~~
+
+`std::getline` gets the next line of the file and returns `false`{.Cpp} if we are at the
+end of the file.
+
+`std::istringstream` converts the `std::string line` to a stream (like
+`std::cin`) which can be used to separate out the three columns.
 

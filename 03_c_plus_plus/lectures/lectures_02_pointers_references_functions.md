@@ -134,9 +134,10 @@ double multiply_by_5(double x) {
 }
 ~~~
 
--------------------
+# Pass by value
 
-A function can only change the value of a variable inside the function, and not in the main program.
+A function can only change the value of a variable inside the function, and not in the 
+main program.
 
 This is because, by default, variables are **passed by value**, and the function only sees a **copy**.
 

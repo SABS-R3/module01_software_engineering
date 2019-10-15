@@ -24,7 +24,7 @@ When you are completing these questions, you may prefer:
   - On Compiler Explorer
   - Using CLion
 
-# Types and Flow Control
+# Types, Flow Control & File I/O
 
 1. Create and assign values to at least one variable of type `int`, `unsigned`, `float`, `double`, `char` and `std::string`.
 1. See what happens when you assign the value `-1` to a variable of type `unsigned`.
@@ -45,6 +45,27 @@ When you are completing these questions, you may prefer:
 1. Code up the [Gauss-Legendre algorithm
    ](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_algorithm)  for 
    estimating $\pi$, which has quadratic convergence.
+1. Write code to implement the backward Euler method to solve the ODE
+
+   $$
+   \frac{dy}{dx} = -y  \quad y(0) = 1.
+   $$
+   
+   on the interval [0 1]. Your code should print a file called `xy.dat` that has 
+   two columns: the calculated values of `x`; and the calculated values of `y`. Read 
+   this file into Python and plot the solution.
+
+   [ *The backward Euler method for this problem results in the difference 
+   relation*
+
+   $$\frac{y_{n+1} - y_n}{h} = -y_{n+1}.$$
+
+   *where h is step size* ]
+
+1. Write code that reads the file `xy.dat` created in the previous exercise, and 
+   computes the error at each point (the true solution is $y = e^{-x}$. Print to 
+   the screen the maximum error.
+
 
 # Pointers, references and functions
 
@@ -60,7 +81,9 @@ When you are completing these questions, you may prefer:
     (a) Write a function that does anything you like. Declare the function prototype above `main`, and define the function below `main`.
     (a) Delete the prototype, and move the definition above `main`. It should still work as expected.
 
-1. Write code that sends the address of an integer to a function that prints out the value of the integer. Change the value of the integer and verify that the original integer is updated outside your function.
+1. Write code that sends the address of an integer to a function that prints out the 
+   value of the integer. Change the value of the integer and verify that the original 
+   integer is updated outside your function.
 
 1. Write a function that accepts two floating point numbers, and swaps the values of these numbers.
     (a) Write this function using pointers

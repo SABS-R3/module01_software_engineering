@@ -1,4 +1,4 @@
-all: lectures_00_intro_compilation lectures_01_types_flow_control lectures_02_pointers_references_functions lectures_03_array_vector  practical_day_1 
+all: lectures_00_intro_compilation lectures_01_types_flow_control lectures_02_pointers_references_functions lectures_03_array_vector  practical
 
 lectures_dir = lectures
 practicals_dir = practicals
@@ -17,7 +17,7 @@ lectures%:${lectures_dir}/lectures%.md
 project%:${projects_dir}/project%.md
 	pandoc  -f markdown$(extensions) $(pdf_template) $^ -o ${publish_dir}/$@.pdf
 
-practical%:${practicals_dir}/practical%.md
+practical:${practicals_dir}/practical.md
 	pandoc  -f markdown$(extensions) $(pdf_template) $^ -o ${publish_dir}/$@.pdf
 
 clean:

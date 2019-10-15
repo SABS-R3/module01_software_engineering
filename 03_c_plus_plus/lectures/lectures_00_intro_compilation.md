@@ -4,27 +4,29 @@
 
 # Administration
 
-- Course Git repository at TODO
-  - Contains lecture notes and exercises
+- Canvas page for the SABS software engineering module has lecture slides, and practical 
+  exercises
 - Combination of lectures and practical sessions
-  - Practical exercises (`practical*.pdf`) give you practice on the material covered in the lectures
+  - Practical exercises (`practical.pdf`) give you practice on the material covered in 
+    the lectures
 
 # Timetable
 
 - 09:30-12:30 Lecture & practical session
 - 12:30-13:30 Break
-- 13:30-17:30 Lecture & practical session
+- 13:30-17:00 Lecture & practical session
 
 # Outline
 
 This course gives you a crash course in C++ programming using C++14, focusing on the
 getting you started and the major differences from Python. *This is a small part of C++
-as a whole!*.
+as a whole!*
 
 1. **Morning**: compilation, basic types, flow control, pointers, references, functions
 1. **Afternoon**: `std::array`, `std::vector`, lambda functions, STL algorithms
 
 This course does **not** cover:
+
 1. Classes and object-oriented programming
 1. Templates and generic programming
 1. Memory allocation/deallocation and smart pointers
@@ -137,7 +139,8 @@ This program prints the text "Hello World" to the screen
 
 # Compiling the code
 
-- A key difference between Matlab and C++ is that before the code can be executed it must be compiled
+- A key difference between Python and C++ is that before the code can be executed it 
+  must be compiled
 - When using software such as the Compiler Explorer or CLion, this is often done automatically
 - When using the Gnu compiler of Unix/Cygwin this code can be compiled by saving the code and typing
 
