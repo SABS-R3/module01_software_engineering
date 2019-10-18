@@ -33,7 +33,7 @@ if __name__ == "__main__":
     sim = cell_model.Simulation(x, y, size, max_dt)
 
     # Set to True to include excluded volume interactions
-    sim.calculate_interactions = True
+    sim.calculate_interactions = False
 
     # profile a single call to integrate
     cProfile.run('sim.integrate(integrate_time)', sort='cumulative')
