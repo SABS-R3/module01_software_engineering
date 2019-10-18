@@ -48,7 +48,6 @@ and unit variance.
 
 # Numpy Vectorisation
 
-
 1. Examine the python code in `src/Simulation.py` and `simulate.py`, which implements
    the cell model described above. Install the code
    using the instructions in the `README.md`, and run it using `python
