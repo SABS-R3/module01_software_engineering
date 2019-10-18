@@ -1,17 +1,93 @@
 
 # Considerations
 
+*what* needs to be considered when planning how to release your software
+
 ## Modes of delivery
 
-* TODO: outline the various different ways of packaging and delivering software
+what is produced and distributed for a release
+
+* Source code
+  * Easy; just access to Git repository. 
+  * Delivery process is to tag repository with release version.
+  * A lot of effort for the user to use the code. 
+  
+* Library (binary) distribution
+  * Distribution artefact is packaged binary code that is already compiled/built and ready for reuse
+  * Used via language specific package system (e.g. import mechanism) 
+    * Python and R; packages
+    * Java; jar files
+  * Key issues
+    * how to specify what dependencies are needed by the distributed code
+	* what package management/building solution to use (e.g. Pip vs Anaconda in Python)
+  * How to distribute
+    * Use mechanisms supported by language tooling - make it easy for your end users
+    * Publish in public artefact repository: PyPI for Python, CRAN for R, Maven for Java
+	* GitHub Package Registry - still in beta
+	* Local (private) artefact repository
+	  * Nexus or Artifactory
+	  * Cache public repositories
+	  * Can store private packages in same manner as publicly released packages
+	  * Useful during development and for testing release process
+	  
+* Application distribution - native
+  * Distribution artefact is a runnable application
+  * Key issues
+    * platform/OS specific build and packaging
+	* required dependencies
+  * How to distribute:
+    * download from web site (e.g. GitHub)
+	
+* Application distribution - containers
+  * Distribution artefact is a Docker image. 
+  * Other container technologies exist but Docker is the de facto standard
+  * Overcomes dependencies and platform/OS issues
+  * How to distribute:
+    * Publish in public Docker registry (Docker Hub, cloud providers, etc)
+    * GitHub Package Registry - still in beta	
+
+* Application distribution - services
+  * Distribution artefact is access to an API - distributing functionality rather than code
+  * Overcomes all issues with dependencies including hardware
+  * How to distribute:
+    * You are now responsible for running as well as building the code
+	* Examples;
+	  * Package as code and deploy as plugin or module of web server (e.g. mod_wsgi for Python on Apache)
+	  * Package using Docker and run directly or using container orchestration such as Kubernetes
+	
+* Platform as a service (PaaS)
+  * Heroku, Google App Engine, etc
+  * Serverless frameworks
+  * Vendor specific packaging and deployment approaches
+    * Some are now using Docker as the distribution artefact
+	
 
 ## Secondary artefacts
 
-* TODO: artefacts other than primary - source code, documentation, clients for services, etc. ...
+additional artefacts produced on release that can be useful for the end user
+
+* Documentation
+  * Follow conventions from language or community - this will be what the user expects (as minimum)
+  * What type of documentation is useful?
+    * API documentation 
+	* Textual description or manual
+  * How to distribute?
+    * README and Wiki in GitHub repository - documentation is close to code
+	* Separate web page (possibly tied to Git repo - e.g. GitHub pages)
+    * downloadable PDF
+	* packaged for IDE use
+* Source code
+  * downloadable zipped file - is this needed as code is accessible via GitHub?
+  * packaged for IDE use
+* Service client code
+  * You or user responsible for writing client code?
+  * Which language(s)?
+  * Client code generation tooling taking over 
 
 ## Versioning
 
-* Assign unique version names or numbers to released (or pre-released) software
+how to assign unique version numbers to released software
+
 * Why versions: user point of view
   * Users can use specific versions of software
   * Multiple versions allow users to upgrade when *they* are ready

@@ -29,6 +29,8 @@
 
 * Considerations for project packaging and delivery:
   * Expand above quote to thinking about the whole release process at the start of a project.
+  * What to release?
+  * How to release?
 * CI/CD: release automation as an extension of CI
 * Available tooling
 * Application to your projects
