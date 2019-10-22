@@ -60,7 +60,7 @@ But a negative expected outcome
 ```
 
 ### An Example
-```$xslt
+```
 Scenario: Valid login 
 Given a registered user
 When user supplies correct login details

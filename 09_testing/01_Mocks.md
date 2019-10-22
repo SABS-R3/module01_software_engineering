@@ -15,7 +15,7 @@ In Dependency Injection classes do not instantiate the objects they use, they ar
 Ways of achieving
 ### Constructor injection
 
-In Python
+#### In Python
 ```python
 class MyClass(object):
 
@@ -25,20 +25,40 @@ class MyClass(object):
     def do_something(self):
         self.injected.calculate()
 ```
-in C++
+#### in C++
+Interface
+```c++ 
+class InjectedInterface {
+    public:
+       virtual int addNumbers(int n, int m) = 0;
+}
+```
+Implementation class
 ```c++
+class InjectedImplmentation: public InjectedInterface {
+    public:
+        int addNumbers(int n, int m) {
+            return 
+        }
+}
+```
 
+```c++
+class MyClass {
+    public: 
+      MyClass(InjectedInterface )
+};
 ```
 ### Method/variable injection
 In Python:
-```$xslt
+```python
 class MyClass(object):
     
     def do_something(self):
         self.injected.calculate()
 
 ```
-In C++
+
 - Injection framework 
 
 A hybrid approach of default instance which may be useful to get started with

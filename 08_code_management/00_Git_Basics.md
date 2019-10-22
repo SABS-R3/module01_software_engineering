@@ -9,6 +9,7 @@
 
 ### GIT
 - Decentralised
+- not locking
 - Light weight branching
 - No "Trunk"/Special branches - All branches are equal
 
