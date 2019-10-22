@@ -112,23 +112,151 @@ pybind11_add_module(example example.cpp)
 
 \[show example code here\]
 
-# Wrapping C++ classes
+
+# Introduction to C++ Classes
 
 - Lets wrap the following C++ class
 
 ```cpp
-struct Pet {
-    Pet(const std::string &name) : name(name) { }
-    void setName(const std::string &name_) { name = name_; }
-    const std::string &getName() const { return name; }
-
+class Pet {
+public:
     std::string name;
 };
 ```
 
+This class might be used like so:
+
+```cpp
+Pet cat;
+cat.name = "whiskers";
+```
+
+# Writing class function
+
+We want to be able to write functions that are associated with
+this class.
+
+We will write a function `printSummary()` that prints out a nicely
+formatted summary of the information held in the class.
+
+A function on an object is known as a **method** of the
+object.
+
+-----------------------
+
+```cpp
+class Pet {
+public:
+  void printSummary();
+  std::string name;
+};
+
+void Pet::printSummary() {
+  std::cout << "This pet is called \""<< name << "\"" << std::endl;
+}
+```
+
+----------------------------
+
+On the previous slide the compiler knows that the function definition
+is associated with the class `Pet` through the statement
+
+~~~Cpp
+void Pet::printSummary()
+~~~
+
+Where `Pet::` associates the definition with the declaration inside
+the class. This function may used outside the class by using statements
+such as:
+
+~~~Cpp
+cat.printSummary();
+~~~
+
+
+# Constructors
+
+Each time an object of the class of `Pet` is created,
+the program calls a function that allocates space in memory for all
+the variables used.
+
+This function is called a **constructor** and is automatically generated.
+
+This default constructor can be overridden if desired – for example in
+our class we may want to allow the user to set the pet name when a new object is 
+created.
+
+A **constructor** has the same name as the class, has no return type,
+and must be `public`{.Cpp}.
+
+----------------------------
+
+An overridden default constructor function is included in the class
+shown below
+
+~~~Cpp
+class Pet {
+public:
+  Pet(const std::string& _name);
+...
+~~~
+
+and the function is written
+
+~~~Cpp
+Pet::Pet(const std::string& _name) {
+    name = _name;
+}
+~~~
+
+
+----------------------------
+
+or more compactly as:
+
+~~~Cpp
+Pet::Pet(const std::string& _name): name(_name) {}
+~~~
+
+# Access privileges
+
+An instance of a class is known as an **object**. In the previous slide,
+for example, `cat` is an object of type `Pet`.
+
+Variables and functions associated with a class - for example
+`name` and `printSummary()` - are known as class
+**members** and **methods**.
+
+There are three degrees of access to class members and methods:
+
+- `private`{.Cpp} - only accessible to other class members and methods
+- `public`{.Cpp} - accessible to everyone
+- `protected`{.Cpp} - accessible to other class members and to derived classes
+
+----------------------------
+
+It is often useful to restrict access to internal variables of a class and only make 
+available a specific public API. For example, here we will make the variable `name` a 
+`private`{.Cpp} class member and provide access using a pair of functions traditionally 
+called *getter* and *setter* functions
+
+```cpp
+class Pet {
+public:
+    Pet(const std::string &_name);
+    void setName(const std::string &name_) { name = name_; }
+    const std::string &getName() const { return name; }
+    void printSummary();
+private:
+    std::string name;
+};
+```
+
+
 # Wrapping C++ classes
 
-- the binding code is
+- Back to PyBind11...
+- the binding code for our `Pet` class is
 
 ```cpp
 #include <pybind11/pybind11.h>
@@ -166,7 +294,7 @@ PYBIND11_MODULE(example, m) {
 ```cpp
     .def("__repr__",
         [](const Pet &a) {
-            return "<example.Pet named '" + a.name + "'>";
+          return "This pet is called \"" + name + "\"";
         }
     );
 ```
