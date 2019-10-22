@@ -28,27 +28,43 @@ class MyClass(object):
 #### in C++
 Interface
 ```c++ 
-class InjectedInterface {
+class InjectionInterface {
     public:
-       virtual int addNumbers(int n, int m) = 0;
-}
+        virtual int addNumbers(int n, int m) = 0;
+};
+
 ```
 Implementation class
 ```c++
-class InjectedImplmentation: public InjectedInterface {
+class InjectionImplementation: public  InjectionInterface{
     public:
-        int addNumbers(int n, int m) {
-            return 
+        int addNumbers(int n, int m){
+            return n + m;
         }
+};
+
+```
+
+Class injected to:
+```c++
+class MyClass {
+    public:
+        MyClass(InjectionInterface &dependecy) {
+            dep = dependecy;
+        }
+
+    private:
+        InjectionInterface &dep;
+};
+```
+Injection
+```c++
+int main() {
+    InjectionImplementation myDep;
+    MyClass mc(myDep);
 }
 ```
 
-```c++
-class MyClass {
-    public: 
-      MyClass(InjectedInterface )
-};
-```
 ### Method/variable injection
 In Python:
 ```python
@@ -62,7 +78,7 @@ class MyClass(object):
 - Injection framework 
 
 A hybrid approach of default instance which may be useful to get started with
-```$xslt
+```python
 class MyClass(object):
 
     def __init__(self):
