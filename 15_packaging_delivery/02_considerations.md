@@ -52,8 +52,8 @@ what is produced and distributed for a release
   * How to distribute:
     * You are now responsible for running as well as building the code
 	* Examples;
-	  * Package as code and deploy as plugin or module of web server (e.g. mod_wsgi for Python on Apache)
-	  * Package using Docker and run directly or using container orchestration such as Kubernetes
+	  * Package as code and deploy as plugin or module of web server (e.g. mod_wsgi for Python on Apache, Java servlet)
+	  * Package using Docker and run directly or using container orchestration (e.g. Kubernetes)
 	
 * Platform as a service (PaaS)
   * Heroku, Google App Engine, etc
