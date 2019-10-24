@@ -20,6 +20,8 @@ what is produced and distributed for a release
   * Key issues
     * how to specify what dependencies are needed by the distributed code
 	* what package management/building solution to use (e.g. Pip vs Anaconda in Python)
+	* format and layout of project - suitable for packaging approach taken
+	  * possible extra meta-data files are required
   * How to distribute
     * Use mechanisms supported by language tooling - make it easy for your end users
     * Publish in public artefact repository: PyPI for Python, CRAN for R, Maven for Java
