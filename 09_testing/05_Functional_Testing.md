@@ -148,6 +148,47 @@ Many tools are available that support many different test written in many differ
 ## Demonstration
 An example of using Behave.
 
+###Install Behave
+
+``` 
+pip install behave
+```
+
+Now make a directory called “features”. In that directory create a file called “tutorial.feature” containing:
+
+```
+Feature: showing off behave
+
+  Scenario: run a simple test
+     Given we have behave installed
+      When we implement a test
+      Then behave will test it for us!
+```
+
+Make a new directory called “features/steps”. In that directory create a file called “tutorial.py” containing:
+
+```python
+from behave import *
+
+@given('we have behave installed')
+def step_impl(context):
+    pass
+
+@when('we implement a test')
+def step_impl(context):
+    assert True is not False
+
+@then('behave will test it for us!')
+def step_impl(context):
+    assert context.failed is False
+```
+
+Run behave:
+
+```
+behave
+```
+
 ## Exercise 
 Create and execute a test against your software project using Behave
 
