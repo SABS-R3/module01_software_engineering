@@ -148,7 +148,7 @@ Many tools are available that support many different test written in many differ
 ## Demonstration
 An example of using Behave.
 
-###Install Behave
+### Install Behave
 
 ``` 
 pip install behave
