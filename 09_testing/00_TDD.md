@@ -15,7 +15,6 @@ def add_stuff(self, n, m):
     """
     return n + m
 
-
 ```
 
 To execute the test form the command line:
@@ -31,24 +30,34 @@ import myfunctions
 
 class SomeTest(unittest.TestCase):
 
-    def test_itadds(self):
+    def test_it_adds(self):
         self.assertEqual(myfunctions.add_stuff(4, 7), 11)
 
 ```
 
-To execute the test form the command line:
-```
+To execute the test form the command line for a single file:
+``` 
  python -m unittest some_tests.py
 ```
+
+To execute the test form the command line for a directory/module :
+``` 
+ python -m unittest <directory>
+```
+
+
 Or you can run unittests in PyCharm
 
 
 ## Developing following TDD
 
 ### The Cycle
-- Red
-- Green
-- Refactor
+- Red - Write a single test and ensure it fails
+- Green - Make the test pass
+- Refactor - refactor the code and rerun the test
+Repeat above 
+
+![alt text](TDD.gif "The Test Driven Development cycle")
 
 ### The Ground rules
 1. Write one test a time and follow the cycle

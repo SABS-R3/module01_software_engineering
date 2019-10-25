@@ -16,7 +16,7 @@ TODO: Show chart
 
 "It Should"
  
-```
+```gherkin
 Alarm clock
  should display the time
  should wake up owner
@@ -25,17 +25,16 @@ Alarm clock
 
 Gherkin 
 
-```
+```gherkin
 Given Alarm set 
 When when time of Alarm reached
 Then Alarm rings
-
 
 ```
 
 ## Gherkin in more detail
 ### Basic Format
-```
+```gherkin
 Feature: Here is free form description of the feature that can be several lines long.
 
 Scenario: This would be a description of one scenario
@@ -48,7 +47,7 @@ Scenario: A description of another scenario
 ```
 
 ### And and But:
-```
+```gherkin
 Scenario: A more complex scenario
 Given a precondition  
 And another precondition
@@ -60,7 +59,7 @@ But a negative expected outcome
 ```
 
 ### An Example
-```
+```gherkin
 Scenario: Valid login 
 Given a registered user
 When user supplies correct login details
@@ -81,7 +80,7 @@ And user not logged in
 ```
 
 ### Using Example tables
-```$xslt
+```gherkin
 Feature: Fruit Multi-purchase discounts.  Apples are €0.50 each for up to 4 (inclusive), then €0.45 each, for 10 or over they are €0.40.  Oranges are €0.80 each for the first 12, then €0.75.
 
 Scenario: Shopper buys single type of fruit.
@@ -107,7 +106,7 @@ Examples:
 TODO: Add reading suggestion Specification by Example 
 
 ### Imperative and Declarative
-```$xslt
+```gherkin
 Imperative
 Given …
 When User arrives a journal land clicks on login field
@@ -123,7 +122,7 @@ When user supplies correct login details
 ```
 
 ### Sensible Defaults
-```$xslt
+```gherkin
 Scenario: “Default” user logs in
 Given a registered user
 When user supplies correct login details
@@ -145,7 +144,10 @@ And user not logged in
 
 Many tools are available that support many different test written in many different lanaguages.  We will look a Behave with Python.
 
-## Demonstration
+## Behave
+Behave is a BDD framework for Python (https://behave.readthedocs.io).
+
+### Demonstration
 An example of using Behave.
 
 ### Install Behave
@@ -153,10 +155,10 @@ An example of using Behave.
 ``` 
 pip install behave
 ```
-
+### Using behave
 Now make a directory called “features”. In that directory create a file called “tutorial.feature” containing:
 
-```
+```gherkin 
 Feature: showing off behave
 
   Scenario: run a simple test

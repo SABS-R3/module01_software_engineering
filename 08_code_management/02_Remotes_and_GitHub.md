@@ -12,15 +12,6 @@ git remote add <remote name> <remote url>
 ```
 Default remote name is `origin`
 
-fetching branches and tags from remote
-```
-git fetch <remote name>
-```
-If fetching from remote called `orgin`
-```
-git fetch
-```
-
 Push a branch to a remote branch 
 ```
 git push --set-upstream <remote> <upstream branch name>
@@ -36,10 +27,21 @@ pull changes from remote branch to local tracking branch
 git pull
 ```
 
+To make you local branch be aware of latest set of remote branches you will need to fetch from the remote
+
+fetching branches and tags from remote
+```
+git fetch <remote name>
+```
+If fetching from remote called `orgin`
+```
+git fetch
+```
+
+
 ## GitHub
 - GitHub is a hosted Git Server at https://github.com
 - Free account allow unlimited public and private projects.  Though only 3 collaborates are permitted on private projects is restricted
-  
 
 ### Exercise 02.01
 1. Register a at github.com

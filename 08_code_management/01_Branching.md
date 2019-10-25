@@ -60,14 +60,13 @@ In your sandbox project experiment with branch and rebasing:
 The merge command shown earlier will fail if there are changes to the same files in both branches.
 No fast forward merge and resolve conflicts
 ```
-git merge --no-ff <source branch>
+git merge <source branch>
 ```
 Resolve the conflicts and use `git add` to mark as merged.  Committing will apply the merge.
 
 Rebasing your source branch may also solve or reduce the merge conflicts
 
-### Exercise 01.02
-In pairs take a sandbox project and make changes to the same files  
+
 
 ## Branching Strategy
 There are many complex branching strategies (see Git Flow for example). However, it is best to keep it simple.

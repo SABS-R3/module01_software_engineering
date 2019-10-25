@@ -75,8 +75,6 @@ class MyClass(object):
 
 ```
 
-- Injection framework 
-
 A hybrid approach of default instance which may be useful to get started with
 ```python
 class MyClass(object):
@@ -89,10 +87,102 @@ class MyClass(object):
 
 ```
 
+## Mocking in Python
+
+Example of Python file being tested:
+```python
+from temperature_sensor import TemperatureSensor
 
 
-In unit testing the test can be the injector to inject mock objects. Test injection frameworks are available.
+class TemperatureTracker:
 
+    def __init__(self) -> None:
+        self.sensor = TemperatureSensor()
+        self.start_temp = 0
+
+    def record_initial_temperature(self):
+        self.start_temp = self.sensor.check_temperature()
+
+    def find_temperature_change(self):
+        return self.sensor.check_temperature() - self.start_temp
+```
+
+## Mocking with Mock class
+```python
+import unittest
+from temperature_tracker import TemperatureTracker
+from unittest.mock import Mock
+
+
+class TestWithMock(unittest.TestCase):
+
+    def test_tracks_temperature_change(self):
+        tracker = TemperatureTracker()
+        mock_sensor = Mock()
+        tracker.sensor = mock_sensor
+
+        mock_sensor.configure_mock(**{'check_temperature.return_value': 12})
+
+        tracker.record_initial_temperature()
+        mock_sensor.configure_mock(**{'check_temperature.return_value': 22})
+        self.assertEqual(10, tracker.find_temperature_change())
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
+
+## Mock with patch
+```python
+import unittest
+from temperature_tracker import TemperatureTracker
+from temperature_sensor import TemperatureSensor
+from unittest.mock import patch
+
+results = [12, 22]
+
+
+class TestWithPatch(unittest.TestCase):
+
+    @patch.object(TemperatureSensor, 'check_temperature', side_effect=results)
+    def test_tracks_temperature_change(self, mock):
+        tracker = TemperatureTracker()
+        tracker.record_initial_temperature()
+        self.assertEqual(10, tracker.find_temperature_change())
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
+
+## Using patch with built in function
+Python file under test:
+```python
+import time
+
+
+def whats_the_time():
+    return time.time()
+```
+Test code:
+```python
+import unittest
+import clock
+from unittest.mock import patch
+
+
+class MyTestCase(unittest.TestCase):
+
+    @patch('time.time', return_value=1571871846.8861961)
+    def test_the_time(self, mock):
+        self.assertEqual(clock.whats_the_time(), 1571871846.8861961)
+
+
+if __name__ == '__main__':
+    unittest.main()
+```
 ## Exercise
 Name picker:
 Implement a function that can provides a random name from the top 100 list of baby names in the UK in 2018
