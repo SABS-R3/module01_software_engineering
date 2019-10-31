@@ -24,10 +24,11 @@ what is produced and distributed for a release
 	  * possible extra meta-data files are required
   * How to distribute
     * Use mechanisms supported by language tooling - make it easy for your end users
-    * Publish in public artefact repository: PyPI for Python, CRAN for R, Maven for Java
-	* GitHub Package Registry - still in beta
+    * Publish in public artefact repository: [PyPI for Python](https://pypi.org/), 
+	  [CRAN for R](https://cran.r-project.org/), [Maven for Java](https://search.maven.org/)
+	* [GitHub Package Registry](https://github.com/features/package-registry) - still in beta
 	* Local (private) artefact repository
-	  * Nexus or Artifactory
+	  * [Nexus](https://www.sonatype.com/product-nexus-repository) or [Artifactory](https://jfrog.com/open-source/)
 	  * Cache public repositories
 	  * Can store private packages in same manner as publicly released packages
 	  * Useful during development and for testing release process
@@ -45,7 +46,7 @@ what is produced and distributed for a release
   * Other container technologies exist but Docker is the de facto standard
   * Overcomes dependencies and platform/OS issues
   * How to distribute:
-    * Publish in public Docker registry (Docker Hub, cloud providers, etc)
+    * Publish in public Docker registry ([Docker Hub](https://hub.docker.com/), cloud providers, etc)
     * GitHub Package Registry - still in beta	
 
 * Application distribution - services

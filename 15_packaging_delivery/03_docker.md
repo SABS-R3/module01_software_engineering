@@ -9,7 +9,7 @@
   Linux kernel as the system that they're running on and only requires applications be shipped with things not already running on the host computer. This gives a significant
   performance boost and reduces the size of the application.
 
-## Docker command
+## Docker commands
 
 * docker build - builds a Docker image from a Dockerfile
 * docker push - pushes the Docker image to a central registry

@@ -18,7 +18,6 @@
 * Default open source license for projects is BSD 3
 * Possible talk by open source license expert later in year
 
-[^semantic_versioning]: [Semantic versioning](https://semver.org/)
 [^api_design]: [How to Design a Good API and Why it Matters](http://fwdinnovations.net/whitepaper/APIDesign.pdf)
 
 

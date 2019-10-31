@@ -14,7 +14,7 @@ how to assign unique version numbers to released software
   * Developers know which version they are working on
   * Bug reports are filed against specific versions
   * Feature releases can be planned for specific versions
-* Semantic versioning[^semantic_versioning]
+* [Semantic versioning](https://semver.org/)
   * Has meaning (version number has semantics)
   * Format: MAJOR.MINOR.PATCH (e.g. 2.5.8)
     * All increment with new release
