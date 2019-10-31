@@ -27,19 +27,26 @@ This lecture will focus on the middle two.
   17.0, Microsoft Visual C++ $\ge$ 2005) 
 - OpenMP uses fork and join model:
 
-![](figs/Fork_join.svg)
+![](lectures/figs/Fork_join.svg)
 
 # Core elements
 
-![](figs/OpenMP_language_extensions.svg)
+![](lectures/figs/OpenMP_language_extensions.svg)
 
 # creating threads - parallel regions
 
 - Use the `parallel` directive to create a parallel region
+
+```cpp
+#pragma omp parallel
+```
+
 - program flow splits into $N$ threads ($N$ set by environment variable OMP_NUM_THREADS, 
   `omp_set_num_threads()` function, or `num_threads` directive)
 - compile using `-fopenmp` for GCC or Clang++, `/openmp` for Visual Studio, or `-openmp` 
   for intel
+
+---------------------
 
 ```cpp
 #include <iostream>
@@ -51,7 +58,8 @@ int main(void)
     {
       const int id = omp_get_thread_num();
       const int n = omp_get_num_threads();
-      std::cout << "Hello world. I am thread "<< id <<" of "<< n <<std::endl;
+      std::cout << "Hello world. I am thread "<< id
+                << " of "<< n <<std::endl;
     }
     return 0;
 }
@@ -61,7 +69,6 @@ int main(void)
 
 - variables declared before parallel region are shared
 - those declared within parallel regions are private
-- can be explicitly specified using `shared`, `private` directives
 
 ```cpp
 int a; // a is shared between threads
@@ -74,8 +81,6 @@ int a; // a is shared between threads
 
 # Shared versus private variables
 
-- variables declared before parallel region are shared
-- those declared within parallel regions are private
 - can be explicitly specified using `shared`, `private` directives
 
 ```cpp
@@ -90,6 +95,13 @@ int b; // b is private to each thread
 # Syncronisation - critical
 
 - Critical regions are executed by one thread at a time
+
+```cpp
+#pragma omp parallel
+```
+
+--------------------------
+
 
 ```cpp
 #include <iostream>
